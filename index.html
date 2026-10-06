@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mapa do Poder</title>
+  <meta name="description" content="Quantos políticos e assessores o Brasil sustenta, e quanto isso custa. Uma árvore interativa do poder público.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="hero">
+    <p class="kicker">Mapa do Poder · Brasil 2026</p>
+    <h1>Quantas pessoas o poder público sustenta?</h1>
+    <p class="lead">Cada bonequinho é uma pessoa paga com dinheiro público. Primeiro veja o gabinete de <b>um</b> político e quem ele pode nomear. Depois multiplique pelo número de políticos e veja o tamanho da estrutura.</p>
+
+    <div class="totals">
+      <div class="total">
+        <span class="total-n" id="total-people">0</span>
+        <span class="total-l">pessoas mapeadas</span>
+      </div>
+      <div class="total">
+        <span class="total-n" id="total-cost">R$ 0</span>
+        <span class="total-l">por ano (piso estimado*)</span>
+      </div>
+    </div>
+
+    <h2 class="hero-compare-title">É do tamanho de quê?</h2>
+    <div id="hero-compare"></div>
+  </header>
+
+  <div class="progress" aria-live="polite">
+    <div class="progress-text">Você já revelou <b id="revealed">0</b> de <span id="revealed-total">0</span> pessoas</div>
+    <div class="progress-track"><div class="progress-bar" id="revealed-bar"></div></div>
+  </div>
+
+  <main>
+    <section>
+      <div class="section-head">
+        <h2>A árvore</h2>
+        <div class="actions">
+          <button type="button" id="open-all">Abrir tudo</button>
+          <button type="button" id="close-all" class="ghost">Recolher</button>
+        </div>
+      </div>
+      <div id="tree" class="tree"></div>
+      <p class="footnote">* Soma apenas os custos que dá para estimar com dados públicos. Os cargos comissionados federais, os governadores, os prefeitos e boa parte da estrutura das assembleias ficam de fora, então o custo real é maior.</p>
+    </section>
+
+    <section>
+      <h2>E o seu estado?</h2>
+      <label class="uf-label" for="uf">Escolha um estado</label>
+      <select id="uf"><option value="">Selecione…</option></select>
+      <div id="uf-out" class="uf-out"></div>
+    </section>
+
+    <section>
+      <h2>Para colocar em perspectiva</h2>
+      <div id="facts" class="facts"></div>
+    </section>
+
+    <section class="method">
+      <h2>Metodologia e fontes</h2>
+      <p>Os números de assessores são os <b>limites máximos permitidos</b> por lei ou regimento. Nem todo parlamentar usa o limite inteiro. Nas assembleias estaduais o limite varia, então usamos uma média estimada de 20 assessores por deputado. Os valores são de 2025/2026 e servem para dar escala, não para auditoria. Confira sempre as fontes oficiais.</p>
+      <p>Os 513 deputados federais e 54 dos 81 senadores (2/3 do Senado) eleitos em 2026 tomam posse em fevereiro de 2027. A ampliação da Câmara para 531 vagas foi vetada.</p>
+      <ul id="sources" class="sources"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Dados públicos · projeto independente e apartidário</p>
+    <p>Feito por <a href="https://www.linkedin.com/in/william-kliemann-297b80a3/" target="_blank" rel="noopener">William Kliemann · LinkedIn</a></p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
