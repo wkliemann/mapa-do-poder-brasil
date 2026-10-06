@@ -31,6 +31,9 @@ function group(label, children, { sub = "", note = "", info = [], unit = null } 
   };
 }
 
+const comissionadosCarreira = Math.ceil(REF.comissionadosFederais * 0.6);
+const comissionadosLivres = REF.comissionadosFederais - comissionadosCarreira;
+
 const porFed = [...ESTADOS].sort((a, b) => b[2] - a[2]);
 const porEst = [...ESTADOS].sort((a, b) => b[3] - a[3]);
 
@@ -73,16 +76,15 @@ const executivoFederal = group("Poder Executivo Federal", [
     people: REF.ministros + REF.comissionadosFederais,
     cost: REF.ministros * custoAnual.agentePolitico,
     unit: {
-      title: "Um ministério, em média",
-      head: { label: "1 ministro", detail: "R$ 46.366,19/mês de salário", kind: "nomeado" },
-      staff: [{
-        n: Math.round(REF.comissionadosFederais / REF.ministros), per: 10,
-        label: `~${fmtInt.format(Math.round(REF.comissionadosFederais / REF.ministros))} cargos de confiança`, kind: "assessor",
-      }],
-      unitCost: custoAnual.agentePolitico, unitCostNote: "só o salário do ministro",
-      times: REF.ministros, timesLabel: "ministérios",
+      title: "Toda a administração federal",
+      head: { n: REF.ministros, label: `${REF.ministros} ministros`, detail: "R$ 46.366,19/mês de salário cada", kind: "nomeado" },
+      staff: [
+        { n: comissionadosCarreira, per: 500, label: `${fmtInt.format(comissionadosCarreira)} com servidores de carreira (mínimo de 60%)`, kind: "servidor" },
+        { n: comissionadosLivres, per: 500, label: `até ${fmtInt.format(comissionadosLivres)} podem ser indicados de fora (máximo de 40%)`, kind: "assessor" },
+      ],
+      times: 1,
     },
-    note: `São ${fmtInt.format(REF.comissionadosFederais)} cargos de direção, chefia e assessoramento (nov/2025), o maior número da história, espalhados por ministérios, autarquias e fundações. A média por ministério inclui os órgãos vinculados. Parte desses cargos é ocupada por servidores de carreira. O custo considera só o salário dos ministros.`,
+    note: `São ${fmtInt.format(REF.comissionadosFederais)} cargos e funções de direção, chefia e assessoramento (nov/2025), o maior número da história. Eles NÃO são assessores pessoais dos ministros: estão espalhados por toda a administração federal, com 53% nos ministérios e o resto em autarquias e fundações, como INSS, Ibama e universidades. Pela Lei 14.204/2021, pelo menos 60% precisam ser ocupados por servidores concursados. O restante (até cerca de 20 mil) pode ser de livre nomeação, inclusive de pessoas de fora do serviço público. O custo considera só o salário dos ministros.`,
   }),
 ], { sub: "Presidência, ministérios e cargos de confiança" });
 
@@ -314,7 +316,7 @@ function renderUnit(node) {
   org.append(staffRow);
   box.append(org);
 
-  const perUnit = 1 + u.staff.reduce((s, x) => s + x.n, 0);
+  const perUnit = (u.head.n || 1) + u.staff.reduce((s, x) => s + x.n, 0);
   const sum = el("div", "unit-sum");
   sum.innerHTML = `<b>${fmtInt.format(perUnit)} pessoas</b>` +
     (u.unitCost ? ` · <b>${fmtMoney(u.unitCost)}/ano</b> <span>(${u.unitCostNote})</span>` : "");
@@ -338,6 +340,8 @@ function renderUnit(node) {
       box.classList.remove("pending");
       animateNumber(n, node.people, (v) => fmtInt.format(Math.round(v)));
     }, wait);
+  } else if (node.people >= DIA_A_DIA.aviao) {
+    box.append(renderCompare(node.people, node.cost, "Do tamanho de quê?"));
   }
   return box;
 }

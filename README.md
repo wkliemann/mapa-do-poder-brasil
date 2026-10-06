@@ -29,7 +29,7 @@ Os números são traduzidos em coisas do dia a dia: Maracanãs lotados, ônibus,
 | 👥 Pessoas mapeadas | **160 mil**, o suficiente para lotar o Maracanã 2 vezes |
 | 💰 Custo estimado | **R$ 19 bi/ano** (piso) |
 | 🏛️ Assessores que o Congresso pode contratar | **17.280** |
-| 🧑‍💼 Cargos comissionados no governo federal | **50.770** |
+| 🧑‍💼 Cargos e funções de confiança no governo federal | **50.770**, sendo pelo menos 60% com servidores de carreira |
 | 🏘️ Vereadores | **58.072**, em 5.569 cidades |
 
 ## O que está incluído

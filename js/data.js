@@ -60,6 +60,7 @@ const FONTES = [
   ["Gazeta do Povo: quanto custa um senador", "https://www.gazetadopovo.com.br/vozes/lucio-vaz/milhares-de-assessores-salarios-gordos-plano-de-saude-quanto-custa-um-senador-no-brasil/"],
   ["Congresso em Foco: limite de cargos nos gabinetes do Senado", "https://www.congressoemfoco.com.br/noticia/56803/senadores-violam-regra-e-montam-supergabinetes"],
   ["Revista Oeste: 50.770 cargos comissionados no governo federal", "https://www.revistaoeste.com/politica/governo-lula-totaliza-mais-de-50-mil-cargos-comissionados-em-2025/"],
+  ["Lei 14.204/2021: cargos e funções de confiança do Executivo federal", "https://www2.camara.leg.br/legin/fed/lei/2021/lei-14204-16-setembro-2021-791739-publicacaooriginal-163432-pl.html"],
   ["Poder360: 5.569 cidades e cerca de 58 mil vereadores", "https://www.poder360.com.br/eleicoes/5-569-cidades-elegem-prefeitos-e-cerca-de-58-114-vereadores-em-2024/"],
   ["Câmara: veto ao aumento de 513 para 531 deputados", "https://www.camara.leg.br/noticias/1181279-LULA-VETA-PROJETO-QUE-AUMENTA-DE-513-PARA-531-O-NUMERO-DE-DEPUTADOS-FEDERAIS"],
   ["Itatiaia: cota parlamentar por estado", "https://www.itatiaia.com.br/politica/saiba-quanto-cada-deputado-federal-pode-gastar-com-a-cota-parlamentar/"],

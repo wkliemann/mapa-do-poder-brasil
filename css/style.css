@@ -129,6 +129,7 @@ button, select { font: inherit; }
 .person.eleito { fill: var(--gold); }
 .person.nomeado { fill: var(--orange); }
 .person.assessor { fill: var(--teal); }
+.person.servidor { fill: #7d9a8c; }
 .person .tie { fill: var(--bg); }
 @keyframes pop { from { opacity: 0; transform: scale(.3) translateY(6px); } to { opacity: 1; transform: none; } }
 
