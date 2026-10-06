@@ -233,6 +233,10 @@ footer { text-align: center; color: var(--muted); font-size: .85rem; padding: 48
 footer p { margin: 4px 0; }
 footer a { color: var(--gold); font-weight: 600; text-decoration: none; }
 footer a:hover { text-decoration: underline; }
+footer .credit { font-size: 1rem; color: var(--text); }
+footer .joke { font-style: italic; max-width: 60ch; margin: 8px auto; }
+footer .visits { margin-top: 16px; }
+footer .visits b { color: var(--text); font-variant-numeric: tabular-nums; }
 
 @media (max-width: 560px) {
   .node-head { flex-wrap: wrap; padding: 12px 14px; }

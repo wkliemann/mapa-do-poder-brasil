@@ -496,6 +496,27 @@ function renderFacts() {
   });
 }
 
+/* ---------- contador de visitas ---------- */
+
+// Abacus: contador gratuito sem cadastro. Conta uma visita por sessão do navegador.
+async function renderVisits() {
+  const base = "https://abacus.jasoncameron.dev";
+  const key = "wkliemann-mapa-do-poder/visitas";
+  let counted = false;
+  try { counted = sessionStorage.getItem("visitou") === "1"; } catch {}
+  try {
+    const res = await fetch(`${base}/${counted ? "get" : "hit"}/${key}`);
+    if (!res.ok) return;
+    const { value } = await res.json();
+    if (typeof value !== "number" || value < 1) return;
+    try { sessionStorage.setItem("visitou", "1"); } catch {}
+    document.getElementById("visits").hidden = false;
+    animateNumber(document.getElementById("visits-n"), value, (v) => fmtInt.format(Math.round(v)));
+  } catch {
+    // serviço fora do ar: o contador simplesmente não aparece
+  }
+}
+
 /* ---------- init ---------- */
 
 function init() {
@@ -522,6 +543,7 @@ function init() {
 
   renderStatePicker();
   renderFacts();
+  renderVisits();
 
   const src = document.getElementById("sources");
   FONTES.forEach(([t, u]) => {
